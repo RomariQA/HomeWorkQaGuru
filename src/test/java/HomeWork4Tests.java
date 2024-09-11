@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -13,6 +14,7 @@ public class HomeWork4Tests {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://github.com";
         Configuration.pageLoadStrategy = "eager";
+        Configuration.holdBrowserOpen = true;
     }
 
     @Test
@@ -21,14 +23,19 @@ public class HomeWork4Tests {
         $("#wiki-tab").click(); // перешли на вики
         $(".Box-row.wiki-more-pages-link").$("button").click(); //
         $(".wiki-rightbar").$(byText("SoftAssertions")).click();
-        // перешли на Soft assertions (проверка действием получается - иначе дальше упадет);
-        $(".highlight.highlight-source-java.notranslate.position-relative.overflow-auto")
-                .shouldHave(text("public class Tests {\n" +
-                "  @Test\n" +
-                "  public void test() {\n" +
-                "    $(\"#first\").should(visible).click();\n" +
-                "    $(\"#second\").should(visible).click();\n" +
-                "  }\n" +
-                "}")); //проверка
+        $(".markdown-body")
+                .shouldHave(text("""
+                @ExtendWith({SoftAssertsExtension.class})
+                class Tests {
+                  @Test
+                  void test() {
+                    Configuration.assertionMode = SOFT;
+                    open("page.html");
+                                
+                    $("#first").should(visible).click();
+                    $("#second").should(visible).click();
+                  }
+                }
+                """));
     }
 }
