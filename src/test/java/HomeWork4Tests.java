@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class HomeWork4Tests {
@@ -18,7 +19,9 @@ public class HomeWork4Tests {
     void selenideWikiTabTest() {
         open("/selenide/selenide"); // открыли страницу
         $("#wiki-tab").click(); // перешли на вики
-        $$(".internal.present").findBy(text("Soft assertions")).click(); // перешли на Soft assertions (проверка действием получается - иначе дальше упадет)
+        $(".Box-row.wiki-more-pages-link").$("button").click(); //
+        $(".wiki-rightbar").$(byText("SoftAssertions")).click();
+        // перешли на Soft assertions (проверка действием получается - иначе дальше упадет);
         $(".highlight.highlight-source-java.notranslate.position-relative.overflow-auto")
                 .shouldHave(text("public class Tests {\n" +
                 "  @Test\n" +
