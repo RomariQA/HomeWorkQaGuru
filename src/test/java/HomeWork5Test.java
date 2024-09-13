@@ -16,14 +16,11 @@ public class HomeWork5Test {
     }
 
     @Test
-    void openEnterprize (){
+    void openEnterprise (){
         String baseUrl = Configuration.baseUrl;
         open(baseUrl);
         $(".HeaderMenu-nav").$(byText("Solutions")).hover();
         $(byLinkText("Enterprise")).click();
-        $("#hero-section-brand-heading").shouldHave(text("""
-                The AI-powered
-                developer platform.
-                """));
+        $("#hero-section-brand-heading").shouldHave(text("The AI-powered\ndeveloper platform."));
     }
 }
