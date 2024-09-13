@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.DragAndDropOptions.to;
 import static com.codeborne.selenide.Selenide.*;
 
-public class OptionalHomeWork5Test {
+public class OptionalHomeWork5Tests {
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";

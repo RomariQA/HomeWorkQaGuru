@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class HomeWork5Test {
+public class HomeWork5Tests {
 
 
     @BeforeAll
@@ -17,7 +17,7 @@ public class HomeWork5Test {
     }
 
     @Test
-    void openEnterprise (){
+    void openEnterpriseTest (){
         String baseUrl = Configuration.baseUrl;
         open(baseUrl);
         $(".HeaderMenu-nav").$(byText("Solutions")).hover();
