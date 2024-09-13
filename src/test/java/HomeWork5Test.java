@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class HomeWork5Test {
 
+
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
