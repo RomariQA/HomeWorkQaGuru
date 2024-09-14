@@ -18,8 +18,7 @@ public class HomeWork5Tests {
 
     @Test
     void openEnterpriseTest (){
-        String baseUrl = Configuration.baseUrl;
-        open(baseUrl);
+        open("/");
         $(".HeaderMenu-nav").$(byText("Solutions")).hover();
         $(byLinkText("Enterprise")).click();
         $("#hero-section-brand-heading").shouldHave(text("The AI-powered\ndeveloper platform."));
